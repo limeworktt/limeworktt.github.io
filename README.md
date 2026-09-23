@@ -1,4 +1,4 @@
-<img src="/images/limework_white.png" width="150"/>
+<img src="/images/limework_vertical_white_solid.png" width="150"/>
 
 # Limework's Offical Website
 
