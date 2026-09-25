@@ -70,6 +70,12 @@ body {
     display: flex;
 }
 
+.hero3_cta_container{
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
 .hero_logo{
     width: 400px;
     height: auto;
@@ -85,6 +91,12 @@ body {
     text-align: center;
     padding: 80px;
     background-color:black;
+}
+
+.home_section3{
+    display: flex;
+    padding: 40px;
+    background-color:#e5e5e5;
 }
 
 .section2_image{
@@ -107,11 +119,31 @@ body {
     line-height: 0.95;
 }
 
+.title3{
+    font-size: 40px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    line-height: 1.0;
+}
+
+.font_size_match_hero3{
+    font-size: 65px;
+    line-height: 1.0;
+}
+
 .coming_soon_above_title{
     font-size: 12px;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     color: white;
+}
+
+.coming_soon_above_title3{
+    font-size: 12px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    color: black;
+    line-height: 1.0;
 }
 
 .subtitle{
@@ -399,6 +431,15 @@ a{
 }
 
 
+    .center_horizontally_mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+
 @media (max-width: 800px){
     .desktop_nav{
         display: none;
@@ -532,4 +573,91 @@ a{
     .main_sections{
         padding: 20px;
     }
+
+    .hero_container{
+        flex-direction: column-reverse;
+        padding: 0px;
+        padding-bottom: 40px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero_container_right{
+        flex: 1;
+        padding: 30px;
+    }
+
+    .title{
+        font-size: 30px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 900;
+        line-height: 0.95;
+    }
+
+    .font_size_match_hero{
+        font-size: 45px;
+    }
+
+    .hero_cta_container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero3_cta_container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero_image{
+        width: 400px;
+    }
+
+    .hero_cta{
+        width: 220px;
+        padding-bottom: 10px;
+    }
+
+    .section2_image{
+        width: 350px;
+    }
+
+    .cursive_subscript{
+        font-size: 30px;
+    }
+
+    .home_section2{
+        padding: 40px;
+    }
+
+    .home_section3{
+        flex-direction: column-reverse;
+        padding: 10px;
+        padding-bottom: 40px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .title3{
+        font-size: 26px;
+    }
+
+    .font_size_match_hero3{
+        font-size: 42px;
+    }
+
+    .title2{
+        font-size: 30px;
+    }
+
+    .hero_logo{
+        width: 300px;
+    }
+
+
 }
