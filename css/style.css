@@ -777,3 +777,7 @@ a{
     .section2_image{width:min(100%,620px)}
     .home_section3 .hero_image{width:min(100%,480px)}
 }
+
+.social_info a{color:inherit;text-decoration:none}
+
+.how_hero .hero_cta_container{justify-content:center;align-items:center}
