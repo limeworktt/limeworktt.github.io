@@ -661,3 +661,119 @@ a{
 
 
 }
+/* Story pages */
+.story_page{max-width:1200px;margin:0 auto;padding:42px 40px 80px;font-family:"Montserrat",sans-serif;color:#171a1f}
+.story_hero{text-align:center;padding:90px 20px 72px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;margin-bottom:18px}
+.story_hero .title{max-width:900px;margin:0 auto;font-size:clamp(38px,6vw,70px)}
+.story_lead{max-width:720px;margin:24px auto 0;font-size:18px;line-height:1.7;font-weight:500}
+.story_hero .bubble_sticker{width:max-content;max-width:100%;margin:32px auto 0}
+.story_grid,.steps_grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:0 0 22px}
+.story_card,.step_card{padding:32px;border-radius:20px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(255,255,255,.55));box-shadow:0 14px 36px rgba(49,55,68,.08)}
+.story_card h2,.step_card h2,.story_cta h2{font-family:"Montserrat",sans-serif;font-weight:900;font-size:26px;line-height:1.1;margin-bottom:16px}
+.story_card p:not(.eyebrow),.step_card p:not(.eyebrow),.story_cta p{font-size:14px;line-height:1.8}
+.story_card_dark{background:#111;color:#fff}
+.step_number{display:block;color:#6bc732;font-size:42px;font-weight:900;margin-bottom:30px}
+.story_cta{margin-top:22px;border-radius:22px;background:#111;color:#fff;text-align:center;padding:56px 24px}
+.story_cta p{margin:0 auto 24px;max-width:580px}
+.story_cta .desktop_nav_cta{display:inline-block;background:#6bc732;color:white}
+.how_notes{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:22px}
+@media(max-width:800px){.story_page{padding:10px 18px 50px}.story_hero{padding:60px 4px 42px}.story_lead{font-size:16px}.story_grid,.steps_grid,.how_notes{grid-template-columns:1fr}.story_card,.step_card{padding:26px}.step_number{margin-bottom:16px}}
+
+/* Legal policy index */
+.legal_page{max-width:1180px;margin:0 auto;padding:70px 40px 90px;font-family:"Montserrat",sans-serif}
+.legal_intro{max-width:760px;font-size:16px;line-height:1.7;margin:20px 0}
+.legal_notice{padding:18px 20px;margin:24px 0 32px;border-left:4px solid #6bc732;background:rgba(255,255,255,.55);font-size:13px;line-height:1.7}
+.policy_grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.policy_card{display:flex;flex-direction:column;align-items:flex-start;padding:26px;border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.82),rgba(255,255,255,.48));box-shadow:0 14px 36px rgba(49,55,68,.08)}
+.policy_card h2{font-size:21px;font-weight:900;line-height:1.2;margin:14px 0 10px}
+.policy_card p{font-size:13px;line-height:1.7;margin-bottom:20px}
+.policy_tag,.policy_status{font-size:10px;font-weight:800;letter-spacing:.08em}
+.policy_tag{color:#529d23}
+.policy_status{margin-top:auto;padding:8px 10px;border:1px dashed #6bc732;border-radius:8px;letter-spacing:0}
+.legal_contact{margin-top:32px;font-size:14px}.legal_contact a{color:#438d16;font-weight:700}
+@media(max-width:800px){.legal_page{padding:38px 20px 56px}.policy_grid{grid-template-columns:1fr}.legal_page .title{font-size:36px}}
+
+/* Role-based How It Works page */
+.footer_secondary_links{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;padding-top:16px;border-top:1px solid rgba(0,0,0,.12)}
+.footer_secondary_links .footer_items{font-size:13px;color:#555}
+.how_page{font-family:"Montserrat",sans-serif;color:#171a1f}
+.how_hero{text-align:center;padding:100px 24px 70px;max-width:1100px;margin:auto}
+.how_hero .title{font-size:clamp(42px,6vw,76px)}
+.how_hero .story_lead{max-width:760px}
+.how_hero .bubble_sticker{width:max-content;max-width:100%;margin:28px auto 0}
+.role_split{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.role_panel{padding:70px clamp(28px,6vw,90px);min-width:0}
+.role_lister{background:#111;color:#fff}
+.role_taker{background:#e5e5e5;color:#171a1f}
+.role_panel h2{font-size:clamp(36px,5vw,58px);line-height:.95;font-weight:900;margin:0 0 20px}
+.role_intro{font-size:16px;line-height:1.7;max-width:500px;min-height:54px}
+.role_steps{list-style:none;margin:38px 0 0;padding:0;display:grid;gap:28px}
+.role_steps li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.role_steps li>span{font-size:22px;font-weight:900;color:#6bc732}
+.role_steps h3{font-size:18px;font-weight:800;margin:0 0 7px}
+.role_steps p{font-size:13px;line-height:1.75;margin:0;max-width:540px}
+.payment_flow{background:#6bc732;padding:64px 32px;text-align:center;color:#111}
+.payment_flow h2{max-width:850px;margin:0 auto 28px;font-size:clamp(28px,4vw,46px);font-weight:900;line-height:1.05}
+.payment_flow_steps{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;margin:0 auto 24px;max-width:1100px}
+.payment_flow_steps span{background:rgba(255,255,255,.75);border-radius:12px;padding:15px 18px;font-size:13px;font-weight:800}
+.payment_flow_steps b{font-size:20px}
+.payment_flow>p:last-child{font-size:12px;line-height:1.7;max-width:720px;margin:0 auto}
+.how_language{align-items:center;padding:40px}
+.how_language .hero_image{width:min(100%,620px)}
+.how_language .hero_container_right{padding:40px}
+.how_language .title3{font-size:clamp(32px,4vw,54px)}
+.language_copy{font-size:14px;line-height:1.8;max-width:560px}
+@media(max-width:800px){.how_hero{padding:62px 20px 48px}.role_split{grid-template-columns:1fr}.role_panel{padding:48px 26px}.role_intro{min-height:0}.payment_flow{padding:48px 20px}.payment_flow_steps{flex-direction:column}.payment_flow_steps b{transform:rotate(90deg)}.how_language{padding:10px}.how_language .hero_container_right{padding:25px}.footer_secondary_links{flex-direction:column;gap:10px}}
+
+/* FAQ page */
+.faq_list{display:grid;gap:12px;margin-top:28px}
+.faq_item{padding:22px 24px;border-radius:16px;background:linear-gradient(135deg,rgba(255,255,255,.84),rgba(255,255,255,.52));box-shadow:0 10px 28px rgba(49,55,68,.06)}
+.faq_item summary{cursor:pointer;list-style:none;font-size:16px;font-weight:800}
+.faq_item summary::-webkit-details-marker{display:none}
+.faq_item summary::after{content:"+";float:right;color:#529d23;font-size:22px;line-height:16px}
+.faq_item[open] summary::after{content:"−"}
+.faq_item p{font-size:14px;line-height:1.8;margin:16px 26px 0 0}
+.faq_page a,.legal_notice a{color:#438d16;font-weight:700}
+
+.how_page > .story_cta{max-width:1120px;margin:22px auto 0;width:calc(100% - 80px);box-sizing:border-box}
+@media(max-width:800px){.how_page > .story_cta{width:calc(100% - 36px)}}
+
+.how_page > .story_cta{margin-bottom:48px}
+
+
+/* Scale the homepage's large desktop composition for tablet widths. */
+@media (min-width: 801px) and (max-width: 1100px){
+    .hero_container{align-items:center;padding:28px 24px;gap:8px}
+    .hero_container_left,.hero_container_right{min-width:0}
+    .hero_container_right{padding:24px}
+    .hero_image{width:min(100%,500px)}
+    .hero_logo{width:min(100%,340px)}
+    .title{font-size:clamp(34px,4.2vw,44px)}
+    .font_size_match_hero{font-size:clamp(48px,6vw,62px)}
+    .hero_cta_container{gap:10px;flex-wrap:wrap;padding-top:28px}
+    .hero_cta{width:min(42%,190px);padding-right:8px}
+
+    .home_section2{padding:64px 32px}
+    .title2{font-size:clamp(36px,4.5vw,46px)}
+    .section2_image{width:min(100%,680px)}
+    .cursive_subscript{font-size:40px}
+
+    .home_section3{align-items:center;padding:28px 24px;gap:8px}
+    .home_section3 .hero_container_right{padding:24px}
+    .home_section3 .hero_image{width:min(100%,500px)}
+    .title3{font-size:clamp(30px,3.7vw,40px)}
+    .font_size_match_hero3{font-size:clamp(42px,5vw,56px)}
+    .hero3_cta_container{padding-top:36px}
+}
+
+@media (min-width: 600px) and (max-width: 800px){
+    .hero_container_right{padding:24px}
+    .hero_image{width:min(100%,480px)}
+    .hero_logo{width:min(100%,340px)}
+    .hero_cta_container{gap:8px;padding-top:24px}
+    .hero_cta{width:min(44%,200px);padding-right:6px}
+    .home_section2{padding:48px 30px}
+    .section2_image{width:min(100%,620px)}
+    .home_section3 .hero_image{width:min(100%,480px)}
+}
