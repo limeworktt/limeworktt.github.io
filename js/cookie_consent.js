@@ -101,10 +101,6 @@
         hideBanner();
     });
 
-    document.querySelectorAll('.cookie-settings-trigger').forEach(function (trigger) {
-        trigger.addEventListener('click', function () { showBanner(true); });
-    });
-
     if (consentChoice === 'accepted') loadAnalytics();
     if (consentChoice !== 'accepted' && consentChoice !== 'declined') showBanner(false);
 }());

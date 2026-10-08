@@ -801,6 +801,4 @@ a{
 .cookie_button{min-height:42px;padding:10px 14px;border:1px solid #161a1e;border-radius:10px;background:#fff;color:#161a1e;font-family:"Montserrat",sans-serif;font-size:12px;font-weight:800;cursor:pointer}
 .cookie_button_accept{border-color:#6bc732;background:#6bc732;color:#10140e}
 .cookie_button:hover{transform:translateY(-1px)}
-.cookie-settings-trigger{border:0;background:transparent;text-align:left;cursor:pointer;color:inherit}
-.cookie-settings-trigger:hover{color:#6bc732}
 @media(max-width:700px){.cookie_banner{right:10px;bottom:10px;left:10px;display:block;padding:18px;border-radius:16px}.cookie_banner_actions{margin-top:14px;display:grid;grid-template-columns:1fr 1fr}.cookie_button{width:100%;font-size:11px}}
