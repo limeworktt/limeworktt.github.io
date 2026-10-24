@@ -1,8 +1,9 @@
 (function () {
     const CONSENT_KEY = 'limework_analytics_consent_v1';
-    // Add the GA4 Measurement ID here when Analytics is ready to go live.
-    const GOOGLE_ANALYTICS_ID = '';
+    // GA4 web stream for the Limework promotional website.
+    const GOOGLE_ANALYTICS_ID = 'G-C0XJMRX293';
 
+    let analyticsStarted = false;
     let consentChoice = null;
     try {
         consentChoice = window.localStorage.getItem(CONSENT_KEY);
@@ -34,13 +35,26 @@
 
     function loadAnalytics() {
         if (!/^G-[A-Z0-9]+$/i.test(GOOGLE_ANALYTICS_ID)) return;
-        if (document.querySelector('script[data-limework-google-analytics]')) return;
+        // Keep local previews out of the live reports.
+        if (!['limeworktt.com', 'www.limeworktt.com', 'limeworktt.github.io'].includes(window.location.hostname)) return;
+        window['ga-disable-' + GOOGLE_ANALYTICS_ID] = false;
+        if (analyticsStarted) {
+            window.gtag('consent', 'update', { analytics_storage: 'granted' });
+            return;
+        }
+        analyticsStarted = true;
 
         window.dataLayer = window.dataLayer || [];
         window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
         window.gtag('js', new Date());
-        window.gtag('consent', 'default', { analytics_storage: 'granted' });
-        window.gtag('config', GOOGLE_ANALYTICS_ID);
+        window.gtag('consent', 'default', {
+            analytics_storage: 'granted', ad_storage: 'denied',
+            ad_user_data: 'denied', ad_personalization: 'denied'
+        });
+        window.gtag('config', GOOGLE_ANALYTICS_ID, {
+            allow_google_signals: false,
+            allow_ad_personalization_signals: false
+        });
 
         const script = document.createElement('script');
         script.async = true;
@@ -60,7 +74,7 @@
         '<p class="cookie_banner_title"><svg class="cookie_banner_icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.8 13A9 9 0 1 1 11 3.1a4 4 0 0 0 4.9 4.8 4 4 0 0 0 4.9 5.1Z"/><circle cx="8" cy="9" r="1"/><circle cx="7" cy="15" r="1"/><circle cx="13" cy="16" r="1"/><circle cx="12" cy="11" r=".7"/></svg><span>Your Privacy Matters</span></p>',
         '<button class="cookie_banner_toggle" type="button" aria-expanded="false" aria-controls="cookie-banner-description" aria-label="Expand cookie description"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></button>',
         '</div>',
-        '<p id="cookie-banner-description" hidden>To better understand our customers and offer limework services to more people, our website uses optional Google Analytics which are disabled by default, only if you opt in then our analytics will be enabled.</p>',
+        '<p id="cookie-banner-description" hidden>With your permission, Limework uses Google Analytics to understand visits, approximate locations, popular pages and how people find this site. Analytics stays off unless you accept. You can change your choice on the Legal &amp; Policies page.</p>',
         '<a href="/legal/">Cookies &amp; Privacy Details</a>',
         '<p class="cookie_banner_status" aria-live="polite"></p>',
         '</div>',
@@ -140,12 +154,26 @@
         if (choice === 'accepted') {
             loadAnalytics();
         } else {
+            window['ga-disable-' + GOOGLE_ANALYTICS_ID] = true;
             if (typeof window.gtag === 'function') {
                 window.gtag('consent', 'update', { analytics_storage: 'denied' });
             }
             clearAnalyticsCookies();
         }
         hideBanner();
+    });
+
+    document.addEventListener('click', function (event) {
+        if (event.target.closest('[data-analytics-settings]')) showBanner(true);
+        const link = event.target.closest('a[href]');
+        if (!link || consentChoice !== 'accepted' || !analyticsStarted) return;
+        const destination = new URL(link.href, window.location.href);
+        const network = /(^|\.)instagram\.com$/.test(destination.hostname) ? 'instagram' :
+            /(^|\.)linkedin\.com$/.test(destination.hostname) ? 'linkedin' : null;
+        if (network) window.gtag('event', 'social_link_click', {
+            social_network: network, page_path: window.location.pathname,
+            link_placement: link.closest('.footer') ? 'footer' : 'navigation'
+        });
     });
 
     if (consentChoice === 'accepted') loadAnalytics();
