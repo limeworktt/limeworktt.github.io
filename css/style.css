@@ -482,15 +482,22 @@ a{
 
     .mobile_nav_toggle span{
         display: block;
-        width: 100%;
+        position: absolute;
+        top: calc(50% - 1px);
+        left: 10px;
+        width: calc(100% - 20px);
         height: 2px;
+        transform-origin: center;
         border-radius: 999px;
         background: #11151b;
         transition: transform 180ms ease, opacity 180ms ease;
     }
 
+    .mobile_nav_toggle span:nth-child(1){transform:translateY(-8px)}
+    .mobile_nav_toggle span:nth-child(3){transform:translateY(8px)}
+
     .mobile_nav_toggle.open span:nth-child(1){
-        transform: translateY(9px) rotate(45deg);
+        transform: rotate(45deg);
     }
 
     .mobile_nav_toggle.open span:nth-child(2){
@@ -498,7 +505,7 @@ a{
     }
 
     .mobile_nav_toggle.open span:nth-child(3){
-        transform: translateY(-9px) rotate(-45deg);
+        transform: rotate(-45deg);
     }
 
     .mobile_nav_backdrop{
@@ -884,10 +891,21 @@ a{
 /* Compact the mobile home hero so the Duo preview appears sooner. */
 @media(max-width:800px){
     .home_hero{min-height:0;gap:12px;padding-top:0;padding-bottom:24px}
-    .home_hero .hero_container_right{width:100%;box-sizing:border-box;padding:8px 24px 0}
+    .home_hero .hero_container_right{width:100%;box-sizing:border-box;padding:40px 24px 0}
     .home_hero .hero_container_right > br{display:none}
     .home_hero .title{margin:20px 0 12px}
     .home_hero .subtitle{margin:0;line-height:1.5}
     .home_hero .hero_cta_container{flex-direction:row;flex-wrap:nowrap;justify-content:center;align-items:center;gap:10px;padding-top:18px;padding-bottom:0}
     .home_hero .hero_cta{width:min(44%,150px);max-width:calc(50% - 5px);height:auto;padding:0;flex-shrink:1}
+}
+
+/* Give each main homepage section a full viewport, allowing taller content to grow. */
+.home_page > .home_section3{box-sizing:border-box}
+.home_page > .home_section3{align-items:center}
+@media(max-width:800px){
+    .home_page .home_hero{min-height:100vh;min-height:100svh;justify-content:flex-end;gap:12px}
+    .home_page .home_hero .hero_cta_container{padding-top:58px;padding-bottom:38px}
+    .home_page .home_hero .center_horizontally_mobile{padding-bottom:70px}
+    .home_page .home_hero .title{margin-top:0}
+    .home_page > .home_section3{justify-content:center}
 }
