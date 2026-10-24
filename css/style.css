@@ -11,8 +11,11 @@ html,
 body {
     max-width: 100%;
     overflow-x: clip;
-    background-color: #e5e5e5;    
 }
+
+/* Match the browser canvas to the final footer, including subpixel edges and overscroll. */
+html{background-color:#000}
+body{margin:0;background-color:#e5e5e5}
 
 .main_color{
     color: #6bc732;
@@ -56,6 +59,11 @@ body {
     width: 700px;
     height: auto;
     display: block;
+}
+
+.hero_video{
+    background: transparent;
+    object-fit: contain;
 }
 
 .hero_cta{
@@ -246,6 +254,8 @@ body {
 
 .sub_footer{
     width: 100%;
+    box-sizing: border-box;
+    margin: 0;
     background-color: black;
     color: white;
     display: flex;
@@ -254,6 +264,8 @@ body {
     font-size: 12px;
     padding: 10px;
 }
+
+.sub_footer p{margin:0}
 
 .social_logos{
     width: 40px;
@@ -792,8 +804,15 @@ a{
 /* Cookie and analytics consent */
 .cookie_banner[hidden]{display:none}
 .cookie_banner{position:fixed;z-index:30;right:20px;bottom:20px;left:20px;display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:1120px;margin:0 auto;padding:22px 24px;border:1px solid rgba(255,255,255,.9);border-radius:20px;background:rgba(255,255,255,.96);box-shadow:0 18px 50px rgba(20,28,38,.24);font-family:"Montserrat",sans-serif;color:#171a1f}
-.cookie_banner_copy{max-width:760px}
-.cookie_banner_title{margin:0 0 7px;font-size:17px;font-weight:900}
+.cookie_banner_copy{flex:1;min-width:0}
+.cookie_banner_header{display:flex;align-items:center;justify-content:flex-start;gap:6px;margin-bottom:8px}
+.cookie_banner_title{display:flex;align-items:center;gap:10px;margin:0;font-size:17px;font-weight:900}
+.cookie_banner_icon{width:24px;height:24px;flex-shrink:0}
+.cookie_banner_toggle{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:32px;height:32px;padding:5px;border:0;border-radius:50%;background:transparent;color:inherit;cursor:pointer}
+.cookie_banner_toggle svg{width:22px;height:22px}
+.cookie_banner_toggle[aria-expanded="false"] svg{transform:rotate(180deg)}
+.cookie_banner_toggle:hover{background:rgba(0,0,0,.06)}
+.cookie_banner_toggle:focus-visible{outline:2px solid #397f13;outline-offset:2px}
 .cookie_banner_copy p:not(.cookie_banner_title){margin:0 0 8px;font-size:12px;line-height:1.6}
 .cookie_banner_copy a{color:#397f13;font-size:12px;font-weight:700;text-decoration:underline}
 .cookie_banner_status{margin-top:7px!important;font-weight:700}
@@ -802,3 +821,62 @@ a{
 .cookie_button_accept{border-color:#6bc732;background:#6bc732;color:#10140e}
 .cookie_button:hover{transform:translateY(-1px)}
 @media(max-width:700px){.cookie_banner{right:10px;bottom:10px;left:10px;display:block;padding:18px;border-radius:16px}.cookie_banner_actions{margin-top:14px;display:grid;grid-template-columns:1fr 1fr}.cookie_button{width:100%;font-size:11px}}
+.cookie_banner{padding-block:14px;box-sizing:border-box;border-width:3px;animation:cookie-border-pulse 4s ease-in-out infinite}
+@keyframes cookie-border-pulse{
+    0%,100%{border-color:rgba(107,199,50,.2)}
+    50%{border-color:#6bc732}
+}
+@media(prefers-reduced-motion:reduce){
+    .cookie_banner{animation:none;border-color:#6bc732}
+}
+.cookie_banner.is-resizing{overflow:hidden}
+.cookie_banner.is-collapsed{padding-block:10px}
+.cookie_banner.is-collapsed .cookie_banner_header{margin-bottom:0}
+.cookie_banner.is-collapsed .cookie_banner_copy>a{display:none}
+.cookie_banner_status:empty{display:none}
+@media(min-width:701px){
+    .cookie_banner.is-collapsed{width:fit-content;max-width:calc(100% - 40px);box-sizing:border-box}
+    .cookie_banner.is-collapsed .cookie_banner_copy{flex:0 1 auto}
+}
+@media(max-width:700px){.cookie_banner.is-collapsed .cookie_banner_actions{margin-top:8px}}
+
+/* Give the phone its original, tightly framed proportions and fill the first screen. */
+.home_hero{
+    min-height:calc(100svh - var(--home-nav-height,100px));
+    box-sizing:border-box;
+    align-items:center;
+}
+.home_hero .hero_container_left,
+.home_hero .hero_container_right{min-width:0}
+.home_hero .hero_image{width:100%;height:auto;object-fit:contain}
+.home_hero .hero_image[hidden]{display:none}
+@media(min-width:801px){
+    .home_hero{padding:24px clamp(24px,3vw,48px);gap:clamp(24px,3vw,48px)}
+    .home_hero .hero_container_left{flex:1.08}
+    .home_hero .hero_container_right{flex:1;padding:12px 0}
+    .home_hero .hero_image{max-height:calc(100svh - var(--home-nav-height,100px) - 48px)}
+    .home_hero .hero_logo{width:min(100%,400px)}
+    .home_hero .title{font-size:clamp(30px,3.3vw,50px)}
+    .home_hero .font_size_match_hero{font-size:clamp(40px,4.6vw,70px)}
+    .home_hero .hero_cta_container{gap:16px;flex-wrap:wrap}
+    .home_hero .hero_cta{width:min(44%,250px);padding-right:0}
+}
+@media(max-width:800px){
+    .home_hero{gap:24px;padding-bottom:32px}
+    .home_hero .hero_container_left{width:100%;box-sizing:border-box;padding:0 18px;flex:none}
+    .home_hero .hero_container_right{flex:none}
+}
+
+/* Keep the hero's two headline lines aligned at both edges. */
+[data-headline-top],
+[data-headline-bottom]{display:block;width:max-content;white-space:nowrap}
+@media(max-width:800px){
+    [data-headline-top],
+    [data-headline-bottom]{margin-inline:auto}
+}
+
+/* Let flex columns shrink below the headline's natural unbroken width. */
+.home_section3 .hero_container_left,
+.home_section3 .hero_container_right{min-width:0;box-sizing:border-box}
+.home_section3 .hero_image{max-width:100%;height:auto}
+.home_section3 .title3{max-width:100%;min-width:0}

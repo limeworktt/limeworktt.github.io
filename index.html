@@ -19,6 +19,8 @@
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="js/mobile_menu.js" defer></script>
     <script src="js/cookie_consent.js" defer></script>
+    <script src="js/hero_video.js?v=5" defer></script>
+    <script src="js/headline_fit.js?v=2" defer></script>
 
 
 
@@ -51,9 +53,11 @@
 
 
 
-    <div class="hero_container">
+    <div class="hero_container home_hero">
         <div class="hero_container_left">
-            <image class="hero_image" src="images/ss/preview.png"></image>
+            <video class="hero_image hero_video" data-hero-video data-safari-src="videos/jobs-page-duo-compatible-v3.mp4" data-webm-src="videos/jobs-page-duo-alpha.webm" muted loop playsinline preload="none" width="1024" height="764" poster="images/ss/jobs-page-duo-open.png" aria-label="Limework app preview showing the task experience">
+            </video>
+            <img class="hero_image hero_video_fallback" data-hero-fallback src="images/ss/jobs-page-duo-open.png" width="1024" height="764" alt="Limework app showing a task on an opened Duo phone" hidden>
         </div>
         <div class="hero_container_right">
             <div class="center_horizontally_mobile">
@@ -61,8 +65,8 @@
             </div>
             <br><br>
             <h1 class="title">
-                A BETTER TOMORROW, 
-                <span class="font_size_match_hero"><br>IS HERE <span class="main_color">TODAY.</span></span>
+                <span data-headline-top>A BETTER TOMORROW,</span>
+                <span class="font_size_match_hero" data-headline-bottom>IS HERE <span class="main_color">TODAY.</span></span>
             </h1>
             <p class="subtitle">
                 Welcome to Trinidad & Tobago's 🇹🇹  new standard for getting tasks done, finding skilled people & earning a living.
@@ -101,11 +105,11 @@
         <div class="hero_container_right">
             <h1 class="coming_soon_above_title3">COMING WITH THE APP</h1>
             <h1 class="title3">
-                NO MATTER YUH LANGUAGE,
-                <span class="font_size_match_hero3"><br> PODRÍAMOS <span class="main_color">LIME</span></span>
+                <span data-headline-top>NO MATTER YUH LANGUAGE,</span>
+                <span class="font_size_match_hero3" data-headline-bottom>PODRÍAMOS <span class="main_color">LIME</span></span>
             </h1>
             <p class="subtitle">
-                Limework is planned to support Spanish 🇪🇸 and French 🇫🇷 translations across the app and task listings. More languages may be added in the future. See how it works below.
+                Limework supports translations in Spanish 🇪🇸 and French 🇫🇷 across the app, task listings and more.
             </p>
             <br><br>
             <a class="desktop_nav_cta" href="/how_it_works/">HOW IT WORKS</a>
