@@ -30,7 +30,7 @@
 
     // Use H.264 with the page background in Safari; other browsers retain VP9 alpha.
     const safari = /Apple/.test(navigator.vendor) && /Safari/.test(navigator.userAgent) && !/CriOS|FxiOS|EdgiOS/.test(navigator.userAgent);
-    video.src = safari ? video.dataset.safariSrc : video.dataset.webmSrc;
+    const initialSource = safari ? video.dataset.safariSrc : video.dataset.webmSrc;
     let usingCompatibleSource = safari;
     let loadTimeout;
     function startPlayback() {
@@ -61,5 +61,14 @@
     document.addEventListener('pointerdown', function () {
         if (video.hidden && !video.error) startPlayback();
     }, { once: true });
-    startPlayback();
+    function loadVideo() {
+        if (navigator.connection && navigator.connection.saveData) {
+            showPoster();
+            return;
+        }
+        video.src = initialSource;
+        startPlayback();
+    }
+    if (document.readyState === 'complete') loadVideo();
+    else window.addEventListener('load', loadVideo, { once: true });
 }());
