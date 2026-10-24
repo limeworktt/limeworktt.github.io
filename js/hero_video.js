@@ -32,43 +32,55 @@
     const safari = /Apple/.test(navigator.vendor) && /Safari/.test(navigator.userAgent) && !/CriOS|FxiOS|EdgiOS/.test(navigator.userAgent);
     const initialSource = safari ? video.dataset.safariSrc : video.dataset.webmSrc;
     let usingCompatibleSource = safari;
-    let loadTimeout;
+    let downloadReady = false;
+    let objectURL = null;
+
     function startPlayback() {
-        clearTimeout(loadTimeout);
+        if (!downloadReady) return;
         video.hidden = false;
         if (fallback) fallback.hidden = true;
-        loadTimeout = setTimeout(showPoster, 10000);
         const request = video.play();
-        if (request && typeof request.catch === 'function') {
-            request.catch(function () {
-                clearTimeout(loadTimeout);
-                showPoster();
-            });
+        if (request && typeof request.catch === 'function') request.catch(showPoster);
+    }
+
+    async function downloadVideo(source) {
+        downloadReady = false;
+        showPoster();
+        // The timeout preserves the poster; the download continues in the background.
+        const cutoff = setTimeout(function () {
+            if (!downloadReady) showPoster();
+        }, 10000);
+        try {
+            const response = await fetch(source, { priority: 'high' });
+            if (!response.ok) throw new Error('Video download failed');
+            const blob = await response.blob();
+            clearTimeout(cutoff);
+            if (objectURL) URL.revokeObjectURL(objectURL);
+            objectURL = URL.createObjectURL(blob);
+            video.src = objectURL;
+            video.load();
+        } catch (error) {
+            clearTimeout(cutoff);
+            showPoster();
         }
     }
-    video.addEventListener('playing', function () {
-        clearTimeout(loadTimeout);
+
+    video.addEventListener('loadeddata', function () {
+        downloadReady = true;
+        startPlayback();
     });
     video.addEventListener('error', function () {
-        clearTimeout(loadTimeout);
         if (!usingCompatibleSource) {
             usingCompatibleSource = true;
-            video.src = video.dataset.safariSrc;
-            startPlayback();
+            downloadVideo(video.dataset.safariSrc);
         } else showPoster();
     });
-    // A normal page interaction can allow playback when autoplay is restricted.
+    // Retry blocked autoplay on a later interaction, once the download is ready.
     document.addEventListener('pointerdown', function () {
-        if (video.hidden && !video.error) startPlayback();
-    }, { once: true });
-    function loadVideo() {
-        if (navigator.connection && navigator.connection.saveData) {
-            showPoster();
-            return;
-        }
-        video.src = initialSource;
-        startPlayback();
+        if (video.hidden && downloadReady && !video.error) startPlayback();
+    });
+    showPoster();
+    if (!(navigator.connection && navigator.connection.saveData)) {
+        downloadVideo(initialSource);
     }
-    if (document.readyState === 'complete') loadVideo();
-    else window.addEventListener('load', loadVideo, { once: true });
 }());
