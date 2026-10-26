@@ -825,7 +825,7 @@ a{
 .cookie_banner_status{margin-top:7px!important;font-weight:700}
 .cookie_banner_actions{display:flex;flex-shrink:0;gap:10px}
 .cookie_button{min-height:42px;padding:10px 14px;border:1px solid #161a1e;border-radius:10px;background:#fff;color:#161a1e;font-family:"Montserrat",sans-serif;font-size:12px;font-weight:800;cursor:pointer}
-.cookie_button_accept{border-color:#6bc732;background:#6bc732;color:#10140e}
+.cookie_button_accept{border-color:#6bc732;background:#6bc732;color:#fff}
 .cookie_button:hover{transform:translateY(-1px)}
 @media(max-width:700px){.cookie_banner{right:10px;bottom:10px;left:10px;display:block;padding:18px;border-radius:16px}.cookie_banner_actions{margin-top:14px;display:grid;grid-template-columns:1fr 1fr}.cookie_button{width:100%;font-size:11px}}
 .cookie_banner{padding-block:14px;box-sizing:border-box;border-width:3px;animation:cookie-border-pulse 4s ease-in-out infinite}
@@ -909,3 +909,29 @@ a{
     .home_page .home_hero .title{margin-top:0}
     .home_page > .home_section3{justify-content:center}
 }
+
+/* Three matched availability badges fill the home hero's text column. */
+.home_page .home_hero .hero_cta_container{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:clamp(6px,1.2vw,16px)}
+.home_page .home_hero .hero_cta{display:block;width:100%;max-width:100%;height:auto;padding:0;align-self:center}
+
+/* App-style control for optional analytics on the legal page. */
+.analytics_preferences{margin-top:28px}
+.analytics_preferences_row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:8px 24px;background:#fff;border-radius:20px;font-size:20px;font-weight:700}
+.analytics_preferences > p{margin:12px 4px 0;font-size:13px;line-height:1.7}
+.analytics_switch{position:relative;flex:none;width:76px;height:42px;padding:0;border:0;border-radius:999px;background:#f0f2f5;color:#56636b;cursor:pointer;transition:background 180ms ease}
+.analytics_switch_thumb{position:absolute;top:4px;left:4px;width:34px;height:34px;border-radius:50%;background:white;box-shadow:0 2px 7px #0003;transition:transform 180ms ease}
+.analytics_switch_state{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:11px;font-weight:800}
+.analytics_switch[aria-checked="true"]{background:#6bc732;color:#fff}
+.analytics_switch[aria-checked="true"] .analytics_switch_thumb{transform:translateX(34px)}
+.analytics_switch[aria-checked="true"] .analytics_switch_state{right:auto;left:9px}
+.analytics_switch:focus-visible{outline:3px solid #438d16;outline-offset:4px}
+.cookie_banner .cookie_banner_actions{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,2fr);width:220px;gap:10px}
+.cookie_banner_actions .cookie_button{width:100%;min-width:0;display:flex;align-items:center;justify-content:center}
+@media(max-width:700px){.cookie_banner .cookie_banner_actions{width:100%}.analytics_preferences_row{padding:8px 18px;font-size:17px}}
+@media(prefers-reduced-motion:reduce){.analytics_switch,.analytics_switch_thumb{transition:none}}
+
+@media(max-width:700px){.cookie_banner .cookie_banner_actions{grid-template-columns:minmax(0,9fr) minmax(0,1fr)}.cookie_banner_actions .cookie_button_decline{padding-inline:0}}
+
+.policy_status.policy_status_active{background:#6bc732;color:#fff;border:1px solid #6bc732}
+
+.policy_status.policy_status_disabled{background:#d43c3c;color:#fff;border:1px solid #d43c3c}
